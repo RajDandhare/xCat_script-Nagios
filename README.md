@@ -3,13 +3,16 @@ This Project is for Boot the Multiple Nodes and make a Cluster with Nagios Monit
 
 #This scripts will only work on Linux.
 And only Boot CentOS7.9 in compute nodes.
+#You might need to edit the script for IPs and ens port names (Default IP:192.168.1.1 portName:ens)
 
 Master Node system configuration:
 RAM - 4GB
 Sockets - 2 (you can use one socket too)
 Core - 1 (if you use one socket you might need tow cores)
+Network Adapters - Two Adapter one for NAT and other for hostonly
 
 Compute Nodes system configuration:
+  Network Adapters - one Adapter hostonly 
   For Stateless:
     RAM - 8GB (you will need more RAM because it will boot on RAM without storage disk)
     Sockets - 2 (you can use one socket too)
@@ -29,10 +32,12 @@ Steps:
 4.  thats it!!!!, You will see the script run on the terminal.
 5.  when scripting is done you have to start or restart the nodes.
 
-This All Projects is Done in VM.
+Common or share directory for all nodes are '/home' and '/opt/ohpc/pub' by using NFS.
+
+This All Projects is Done in using VMs.
 
 
 Reference URL Links:
 
-1.https://github.com/openhpc/ohpc/releases/download/v1.3.9.GA/Install_guide-CentOS7-xCAT-Stateless-SLURM-1.3.9-x86_64.pdf
-2.https://github.com/openhpc/ohpc/releases/download/v1.3.9.GA/Install_guide-CentOS7-xCAT-Stateful-SLURM-1.3.9-x86_64.pdf
+1. https://github.com/openhpc/ohpc/releases/download/v1.3.9.GA/Install_guide-CentOS7-xCAT-Stateless-SLURM-1.3.9-x86_64.pdf
+2. https://github.com/openhpc/ohpc/releases/download/v1.3.9.GA/Install_guide-CentOS7-xCAT-Stateful-SLURM-1.3.9-x86_64.pdf
