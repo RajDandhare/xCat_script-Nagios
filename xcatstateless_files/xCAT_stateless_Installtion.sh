@@ -1,6 +1,25 @@
 #!/bin/bash 
 num_computes=2
 
+echo "#################################### Creating Ens.port ###########################################"
+perl -pi -e "s/BOOTPROTO=\S+/BOOTPROTO=none/ " /etc/sysconfig/network-scripts/ifcfg-ens$1
+perl -pi -e "s/ONBOOT=\S+/ONBOOT=yes/ " /etc/sysconfig/network-scripts/ifcfg-ens$1
+echo -e "IPADDR=192.168.1.1\nPREFIX=24\nIPV6_PRIVACY=no" >> /etc/sysconfig/network-scripts/ifcfg-ens$1
+systemctl restart network
+
+echo "#################################### Hostname ############################################"
+hostnamectl set-hostname master.demo.lab
+hostname
+
+echo "#################################### Firewalld ###########################################"
+systemctl stop firewalld
+systemctl disable firewalld
+
+echo "#################################### Selinux #############################################"
+perl -pi -e "s/SELINUX=\S+/SELINUX=disabled/" /etc/selinux/config
+setenforce 0
+echo 0 > /sys/fs/selinux/enforce
+
 echo "######################################### install from http rpm file ##############################################"
 yum -y install http://build.openhpc.community/OpenHPC:/1.3/CentOS_7/x86_64/ohpc-release-1.3-1.el7.x86_64.rpm
 
@@ -28,7 +47,7 @@ ifconfig ens$1 192.168.1.1 netmask 255.255.255.0 up
 chdef -t site dhcpinterfaces="xcatmn|ens$1"
 
 echo "########################### copy iso image ##################################"
-copycds /root/CentOS-7-x86_64-DVD-2009.iso
+copycds ios_files/CentOS-7-x86_64-DVD-2009.iso
 
 echo "############################### Exporting image #################################"
 export CHROOT=/install/netboot/centos7.9/x86_64/compute/rootimg/
@@ -36,7 +55,7 @@ export CHROOT=/install/netboot/centos7.9/x86_64/compute/rootimg/
 echo "################# Genimage ###################"
 echo "osimages....."
 echo "$(lsdef -t osimage)" > osfile
-osi=$(head -2 ./osfile | tail -1 | cut -d " " -f 1)
+osi=$(head -2 osfile | tail -1 | cut -d " " -f 1)
 genimage $osi
 
 # Adding OpenHPC Componentes
