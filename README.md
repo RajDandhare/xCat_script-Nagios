@@ -1,6 +1,8 @@
 # xCat_script-Nagios
 This Project is for Boot the Multiple Nodes and make a Cluster with Nagios Monitoring Tool.
 
+Currently only Stateless script have nagios monitoring tool.
+
 #This scripts will only work on Linux.
 And only Boot CentOS7.9 in compute nodes.
 #You might need to edit the script for IPs and ens port names (Default IP:192.168.1.1 portName:ens)
