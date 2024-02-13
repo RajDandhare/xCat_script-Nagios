@@ -1,14 +1,28 @@
 #!/usr/bin/python3
 
-import os
+import subprocess
 
-ensp = int(input("Enter the ENS port number: "))
+with open(r"ip_file", 'r') as fp:
+    ip_c = len(fp.readlines())
 
-opt = int(input("Select the Booting Process\n\t1. xCAT Stateless\n\t2. xCAT Statefull\n\t-> "))
+with open(r"mac_file", 'r') as fp:
+    mac_c = len(fp.readlines())
 
-if opt == 1:
-	os.system(f"bash xcatstateless_files/xCAT_stateless_Installation.sh {ensp}")
-elif opt == 2:
-	os.system(f"bash xcatstatefull_files/xCAT_statefull_Installation.sh {ensp}")
+if ip_c == mac_c:
+	
+	nfs = input("Do you have external disk connected to master for NFS? [y/n]").lower()
+	if nfs == 'y' or nfs == 'yes':
+		subprocess.run(['bash','nfs.sh'])
+
+	ensp = int(input("Enter the ENS port number: "))
+	osf = int(input("Select IOS file:\n\t1.CentOS-7\n\t-> "))
+	
+	opt = int(input("Select the Booting Process\n\t1. xCAT Stateless\n\t2. xCAT Statefull\n\t-> "))
+	if opt == 1:
+		subprocess.run(['bash','xcatstateless_files/xCAT_stateless_Installtion.sh',f'{ensp}',f'{mac_c}',f'{osf}',f'{nfs}'])
+	elif opt == 2:
+		subprocess.run(['bash','xcatstateless_files/xCAT_stateless_Installtion.sh',f'{ensp}',f'{mac_c}',f'{osf}',f'{nfs}'])
+	else:
+		print("Please Enter the Given Options.....")
 else:
-	print("Please Enter the Given Options.....")
+	print("ERROR: count of ip and mac addresses are not same!!!! Check the ip_file and mac_file. ")
