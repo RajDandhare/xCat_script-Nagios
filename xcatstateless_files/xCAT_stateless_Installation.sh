@@ -71,7 +71,7 @@ yum -y --installroot=$CHROOT install ntp kernel lmod-ohpc
 echo "192.168.1.1:/home /home nfs defaults 0 0" >> $CHROOT/etc/fstab
 echo "192.168.1.1:/opt/ohpc/pub /opt/ohpc/pub nfs defaults 0 0" >> $CHROOT/etc/fstab
 
-# Exporting /home and /opt/ohpc/pub to image
+# Exporting /home and /opt/ohpc/pub to image 
 echo "/home *(rw,no_subtree_check,fsid=10,no_root_squash)" >> /etc/exports
 echo "/opt/ohpc/pub *(ro,no_subtree_check,fsid=11)" >> /etc/exports
 
@@ -256,14 +256,14 @@ perl -pi -e "s/members /members $(cat nodenames)/" /etc/nagios/conf.d/hosts.cfg
 for ((i=0 ; i < $2 ; i++));
 do
   n=$(($i+1))
-  echo -e "\ndefine host {\n use linux-box\n host_name c$n\n alias c$n\n address $(head -$n ./ip_file | tail -1)   ; IP address of Remote Linux host\n}"  >> /etc/nagios/conf.d/hosts.cfg
+  echo -e "\ndefine host {\n use linux-box\n host_name c$n\n alias c$n\n address $(head -$n ip_file | tail -1)   ; IP address of Remote Linux host\n}"  >> /etc/nagios/conf.d/hosts.cfg
 done
 
 # location of mail for alert 
 perl -pi -e "s/ \/bin\/mail/ \/usr\/bin\/mailx/g" /etc/nagios/objects/commands.cfg
 
 #update email address
-perl -pi -e "s/nagios\@localhost/root\@hostname.demo.lab/" /etc/nagios/objects/contacts.cfg
+perl -pi -e "s/nagios\@localhost/root\hpcsa887@gmail.com/" /etc/nagios/objects/contacts.cfg
 
 # check-ssh for hosts
 echo command[check_ssh]=/usr/lib64/nagios/plugins/check_ssh localhost  >> $CHROOT/etc/nagios/nrpe.cfg
@@ -293,7 +293,7 @@ echo "########################### Createig node ################################
 for ((i=0 ; i < $2 ; i++));
 do
   n=$(($i+1))
-  mkdef -t node c$n groups=compute,all ip=$(head -$n ./ip_file | tail -1) mac=$(head -$n ./mac_file | tail -1) netboot=xnba arch=x86_64
+  mkdef -t node c$n groups=compute,all ip=$(head -$n ip_file | tail -1) mac=$(head -$n mac_file | tail -1) netboot=xnba arch=x86_64
 done
 
 chdef -t site domain="master.demo.lab"
@@ -302,9 +302,10 @@ chdef -t site forwarders="192.168.1.1"
 chdef -t site nameservces="192.168.1.1"
 chtab key=system passwd.username=root passwd.password=root
 
-echo "#################### packimage ###################"
+echo "############################# packimage #############################"
 packimage $osi
 
+echo "############################ make dhcp&dns ##########################"
 makehosts
 makenetworks
 makedhcp -a
