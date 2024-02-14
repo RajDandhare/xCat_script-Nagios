@@ -19,9 +19,9 @@ if ip_c == mac_c:
 	
 	opt = int(input("Select the Booting Process\n\t1. xCAT Stateless\n\t2. xCAT Statefull\n\t-> "))
 	if opt == 1:
-		subprocess.run(['bash','xcatstateless_files/xCAT_stateless_Installtion.sh',f'{ensp}',f'{mac_c}',f'{osf}',f'{nfs}'])
+		subprocess.run(['bash','xcatstateless_files/xCAT_stateless_Installation.sh',f'{ensp}',f'{mac_c}',f'{osf}',f'{nfs}'])
 	elif opt == 2:
-		subprocess.run(['bash','xcatstateless_files/xCAT_stateless_Installtion.sh',f'{ensp}',f'{mac_c}',f'{osf}',f'{nfs}'])
+		subprocess.run(['bash','xcatstateless_files/xCAT_stateless_Installation.sh',f'{ensp}',f'{mac_c}',f'{osf}',f'{nfs}'])
 	else:
 		print("Please Enter the Given Options.....")
 else:
