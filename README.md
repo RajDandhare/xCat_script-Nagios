@@ -26,7 +26,7 @@ Compute Nodes system configuration:
     Sockets - 2 (you can use one socket too)
     Core - 1 (if you use one socket you might need tow cores)
 
-First you need to create a folder name ios_files and copy the CentOS7 ios file in there.
+First you need to create a folder name "osimage" and copy the CentOS7 ios file in there.
 link or CentOS7 ios file : https://mirrors.nxtgen.com/centos-mirror/7.9.2009/isos/x86_64/CentOS-7-x86_64-DVD-2207-02.iso
 
 Steps:
