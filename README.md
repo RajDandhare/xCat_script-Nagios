@@ -3,30 +3,30 @@ This Project is for Boot the Multiple Nodes and make a Cluster with Nagios Monit
 
 Currently only Stateless script have Nagios monitoring tool and Slurm available.
 
-This All Projects is Done in using VMs.
-#This scripts will only work on Linux.
-And only Boot CentOS7.9 in compute nodes.
+This All Projects is Done in using VMs.<br />
+#This scripts will only work on Linux.<br />
+And only Boot CentOS7.9 in compute nodes.<br />
 #You might need to edit the script for IPs and ens port names (Default IP:192.168.1.1 portName:ens)
 
-Master Node system configuration:
-RAM - 4GB
-Sockets - 2 (you can use one socket too)
-Core - 1 (if you use one socket you might need tow cores)
-Network Adapters - Two Adapter one for NAT and other for hostonly
+Master Node system configuration:<br />
+RAM - 4GB<br />
+Sockets - 2 (you can use one socket too)<br />
+Core - 1 (if you use one socket you might need tow cores)<br />
+Network Adapters - Two Adapter one for NAT and other for hostonly<br />
 Hard Disk - 100GB(SCSI)
 
-Compute Nodes system configuration:
-  Network Adapters - one Adapter hostonly 
-  For Stateless:
-    RAM - 8GB (you will need more RAM because it will boot on RAM without storage disk)
-    Sockets - 2 (you can use one socket too)
-    Core - 1 (if you use one socket you might need tow cores)
-  For Statefull:
-    RAM - 4GB
-    Sockets - 2 (you can use one socket too)
-    Core - 1 (if you use one socket you might need tow cores)
+Compute Nodes system configuration:<br />
+  Network Adapters - one Adapter hostonly <br />
+  For Stateless:<br />
+    RAM - 8GB (you will need more RAM because it will boot on RAM without storage disk)<br />
+    Sockets - 2 (you can use one socket too)<br />
+    Core - 1 (if you use one socket you might need tow cores)<br /><br />
+  For Statefull:<br />
+    RAM - 4GB<br />
+    Sockets - 2 (you can use one socket too)<br />
+    Core - 1 (if you use one socket you might need tow cores)<br />
 
-First you need to create a folder name "osimage" and copy the CentOS7 ios file in there.
+First you need to create a folder name "osimage" and copy the CentOS7 ios file in there.<br />
 link or CentOS7 ios file : https://mirrors.nxtgen.com/centos-mirror/7.9.2009/isos/x86_64/CentOS-7-x86_64-DVD-2207-02.iso
 
 > Steps:
