@@ -29,14 +29,14 @@ Compute Nodes system configuration:
 First you need to create a folder name "osimage" and copy the CentOS7 ios file in there.
 link or CentOS7 ios file : https://mirrors.nxtgen.com/centos-mirror/7.9.2009/isos/x86_64/CentOS-7-x86_64-DVD-2207-02.iso
 
-Steps:
-1.  Run frontend.py file "python3 frontend.py".
-2.  If you have a secondry disk and want to make it NFS directory for all nodes enter 'y'.
-3.  It will you to enter the ens port (only work on ens ports currently).
-4.  Then it will show two options for Stateless and Statefull select one by entering correct option.
-5.  Thats it!!!!, You will see the script run on the terminal.
-6.  When scripting is done you have to start or restart the nodes.
-7.  After the nodes started you might need to restart slurmctld service.
+> Steps:
+> 1.  Run frontend.py file "python3 frontend.py".
+> 2.  If you have a secondry disk and want to make it NFS directory for all nodes enter 'y'.
+> 3.  It will you to enter the ens port (only work on ens ports currently).
+> 4.  Then it will show two options for Stateless and Statefull select one by entering correct option.
+> 5.  Thats it!!!!, You will see the script run on the terminal.
+> 6.  When scripting is done you have to start or restart the nodes.
+> 7.  After the nodes started you might need to restart slurmctld service.
 
 Common or share directory for all nodes are '/home' and '/opt/ohpc/pub' by using NFS.
 
