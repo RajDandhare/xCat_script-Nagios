@@ -8,20 +8,23 @@ This All Projects is Done in using VMs.<br />
 And only Boot CentOS7.9 in compute nodes.<br />
 #You might need to edit the script for IPs and ens port names (Default IP:192.168.1.1 portName:ens)
 
-Master Node system configuration:<br />
+> [!NOTE]
+> below system configuration are seleted by us. [minimum requirements]
+
+### Master Node system configuration:<br />
 RAM - 4GB<br />
 Sockets - 2 (you can use one socket too)<br />
 Core - 1 (if you use one socket you might need tow cores)<br />
 Network Adapters - Two Adapter one for NAT and other for hostonly<br />
 Hard Disk - 100GB(SCSI)
 
-Compute Nodes system configuration:<br />
-  Network Adapters - one Adapter hostonly <br />
-  For Stateless:<br />
+### Compute Nodes system configuration:<br />
+  Network Adapters - one Adapter hostonly<br /><br />
+  `For Stateless`:<br />
     RAM - 8GB (you will need more RAM because it will boot on RAM without storage disk)<br />
     Sockets - 2 (you can use one socket too)<br />
     Core - 1 (if you use one socket you might need tow cores)<br /><br />
-  For Statefull:<br />
+  `For Statefull`:<br />
     RAM - 4GB<br />
     Sockets - 2 (you can use one socket too)<br />
     Core - 1 (if you use one socket you might need tow cores)<br />
@@ -43,6 +46,6 @@ Common or share directory for all nodes are '/home' and '/opt/ohpc/pub' by using
 
 Reference URL Links:
 
-1. https://github.com/openhpc/ohpc/releases/download/v1.3.9.GA/Install_guide-CentOS7-xCAT-Stateless-SLURM-1.3.9-x86_64.pdf
-2. https://github.com/openhpc/ohpc/releases/download/v1.3.9.GA/Install_guide-CentOS7-xCAT-Stateful-SLURM-1.3.9-x86_64.pdf
-3. https://github.com/Artlands/Install-Slurm
+> 1. https://github.com/openhpc/ohpc/releases/download/v1.3.9.GA/Install_guide-CentOS7-xCAT-Stateless-SLURM-1.3.9-x86_64.pdf
+> 2. https://github.com/openhpc/ohpc/releases/download/v1.3.9.GA/Install_guide-CentOS7-xCAT-Stateful-SLURM-1.3.9-x86_64.pdf
+> 3. https://github.com/Artlands/Install-Slurm
